@@ -6,6 +6,8 @@ Writes one short text to /output/entry.txt.
 
 import os
 
+OUTPUT_PATH = "/output/entry.txt"
+
 TEXT = (
     "The moon pulls the sea from a quarter of a million miles away, "
     "and never touches it. Twice a day the tide rises to meet it anyway. "
@@ -18,8 +20,8 @@ TEXT = (
 def main():
     if not 1 <= len(TEXT) <= 280 or not TEXT.strip():
         raise SystemExit("entry text fails the 1-280 character gate")
-    os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8") as f:
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(TEXT)
 
 
